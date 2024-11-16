@@ -1,0 +1,14 @@
+cmake_minimum_required(VERSION 3.10)
+project(FaceRecognition)
+
+# Set the C++ standard
+set(CMAKE_CXX_STANDARD 14)
+
+# Find dlib package
+find_package(dlib REQUIRED)
+
+# Add executable
+add_executable(FaceRecognition main.cpp)
+
+# Link dlib library
+target_link_libraries(FaceRecognition dlib::dlib)

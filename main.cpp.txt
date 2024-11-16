@@ -1,0 +1,24 @@
+#include <dlib/image_processing/frontal_face_detector.h>
+#include <dlib/image_io.h>
+#include <iostream>
+
+int main() {
+    // Initialize face detector
+    dlib::frontal_face_detector detector = dlib::get_frontal_face_detector();
+
+    // Load an image
+    dlib::array2d<unsigned char> img;
+    dlib::load_image(img, "face_image.jpg"); // Replace with the path to your image
+
+    // Detect faces in the image
+    std::vector<dlib::rectangle> dets = detector(img);
+
+    // Output the number of faces detected
+    std::cout << "Number of faces detected: " << dets.size() << std::endl;
+    for (const auto& d : dets) {
+        std::cout << "Face found at: " << d.left() << ", " << d.top() << ", " << d.right() << ", " << d.bottom() << std::endl;
+    }
+
+    return 0;
+}
+
